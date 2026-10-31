@@ -1,49 +1,151 @@
-# AI Malaria Research Assistant
+# 🦟 AI Malaria Research Assistant
 
-A small educational RAG-style web app that retrieves information from a curated starter knowledge base about malaria and malaria research.
+### An AI-powered educational prototype for malaria research and information retrieval.
 
-## Features
-- Streamlit web interface
-- TF-IDF retrieval over curated source summaries
-- Optional LLM answer generation using an OpenAI API key
-- Source links displayed with retrieved results
-- Demo mode works without an API key
-- Safety note: this app does not diagnose malaria, interpret patient images, or recommend treatment
+The **AI Malaria Research Assistant** is a web application designed to help users explore malaria-related information, including symptoms, diagnosis, prevention, and research methods. It retrieves relevant information from a curated knowledge base and displays the sources used.
 
-## Run locally
-1. Install Python 3.10 or newer.
-2. Open a terminal in this folder.
-3. Create and activate a virtual environment:
-   - Windows: `python -m venv .venv` then `.venv\Scripts\activate`
-   - macOS/Linux: `python3 -m venv .venv` then `source .venv/bin/activate`
-4. Install dependencies: `pip install -r requirements.txt`
-5. Start the app: `streamlit run app.py`
-6. Open the local address printed by Streamlit.
+This project demonstrates how AI-assisted development, information retrieval, and Retrieval-Augmented Generation (RAG) concepts can be applied to healthcare education.
 
-## Enable live AI answers (optional)
-Set `OPENAI_API_KEY` as an environment variable before running the app. Keep the key private and do not upload it to GitHub. Without a key, the app still runs in demo mode and shows the retrieved passages.
+## 🎯 Project Objectives
 
-## How it works
-1. The question and knowledge-base chunks are vectorized with TF-IDF.
-2. Cosine similarity ranks the most relevant passages.
-3. If an API key is configured, the top passages are supplied to the LLM with instructions to answer only from the supplied context.
-4. The interface displays source links for verification.
+- Make malaria research information easier to explore.
+- Retrieve relevant passages from a curated knowledge base.
+- Display source references to support transparent, evidence-based learning.
+- Demonstrate a practical application of AI and information retrieval in healthcare.
 
-This is a lightweight RAG demonstration, not a clinical decision-support tool. It does not currently load or run a CNN image classifier.
+## ✨ Key Features
 
-## Suggested manual tests
-- Submit an empty question.
-- Ask: "What causes malaria and how does it spread?"
-- Ask: "How do healthcare professionals test for malaria?"
-- Ask an unrelated question, such as "How do I repair a bicycle?" and confirm the app explains that it could not find a relevant passage.
-- Run once without an API key to confirm demo mode works.
-- If using an API key, test that the answer stays grounded in the supplied context and that medical safety language remains visible.
+- **Interactive web interface:** Enter a research question or select an example question.
+- **Source-grounded retrieval:** Retrieve relevant passages using TF-IDF-based text matching.
+- **Source references:** Display links to the original information sources.
+- **Demo mode:** Explore retrieved information without requiring an API key.
+- **Optional LLM integration:** Support language-model-generated answers when the required API configuration is provided.
+- **Healthcare safety notice:** Clearly communicate that the application is educational and cannot diagnose malaria or prescribe treatment.
 
-## Knowledge sources
-- WHO, Malaria fact sheet: https://www.who.int/news-room/fact-sheets/detail/malaria
-- CDC, About Malaria: https://www.cdc.gov/malaria/about/index.html
-- CDC, Testing for Malaria: https://www.cdc.gov/malaria/testing/
-- CDC, Symptoms of Malaria: https://www.cdc.gov/malaria/symptoms/
-- NLM, Malaria Dataset research resource: https://lhncbc.nlm.nih.gov/LHC-publications/pubs/MalariaDataset.html
+## 🛠️ Technologies Used
 
-Review official sources regularly; this small collection is not comprehensive.
+- Python
+- Streamlit
+- TF-IDF information retrieval
+- Retrieval-Augmented Generation (RAG) concepts
+- OpenAI API integration (optional)
+- Markdown-based knowledge base
+- Git and GitHub
+- AI tools for project development and debugging
+
+## ⚙️ How It Works
+
+1. The user enters a question about malaria or malaria research.
+2. The application searches a curated collection of educational information.
+3. TF-IDF-based matching identifies passages relevant to the question.
+4. The application displays the retrieved passages and their sources.
+5. When an API key is configured, the application can use an LLM to generate an answer grounded in the retrieved information.
+
+**Note:** Without the API key, the application operates in demo mode and displays retrieved passages rather than generating a live LLM answer.
+
+## 📚 Knowledge Sources
+
+The curated knowledge base includes educational information from:
+
+- [World Health Organization — Malaria Fact Sheet](https://www.who.int/news-room/fact-sheets/detail/malaria)
+- [CDC — About Malaria](https://www.cdc.gov/malaria/about/index.html)
+- [CDC — Testing for Malaria](https://www.cdc.gov/malaria/testing/)
+- [CDC — Symptoms of Malaria](https://www.cdc.gov/malaria/symptoms/)
+- [National Library of Medicine — Malaria Cell Image Dataset](https://lhncbc.nlm.nih.gov/LHC-publications/pubs/MalariaDataset.html)
+
+## 🚀 Run Locally
+
+### Prerequisites
+
+- Python 3.10 or later
+- pip
+
+### Installation
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/ShriyogAP/AI-Malaria-Research-Assistant.git
+cd AI-Malaria-Research-Assistant
+```
+
+**2. Install the dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+**3. Start the application**
+
+```bash
+streamlit run app.py
+```
+
+Open the local URL displayed in your terminal to use the application.
+
+### Optional API Configuration
+
+To enable language-model-generated answers, configure an OpenAI API key using Streamlit secrets or an environment variable, as supported by the application.
+
+Never upload API keys, passwords, or other secrets to GitHub.
+
+## 🧪 Example Questions
+
+Try asking:
+
+- What causes malaria and how does it spread?
+- What are the symptoms of malaria?
+- How is malaria diagnosed?
+- How can malaria be prevented?
+- How do researchers use CNNs to classify malaria blood-smear images?
+
+## ⚠️ Limitations and Responsible Use
+
+- This is an educational prototype, not a medical diagnostic tool.
+- It does not replace professional medical advice or laboratory testing.
+- It does not currently run a CNN model or classify uploaded blood-smear images.
+- The quality of retrieved information depends on the knowledge base and retrieval method.
+- Medical information should be checked against current official guidance.
+
+Anyone who suspects malaria should seek prompt assessment from a qualified healthcare professional. Severe symptoms, including confusion, seizures, or difficulty breathing, require emergency care.
+
+## 📁 Project Structure
+
+```text
+AI-Malaria-Research-Assistant/
+├── app.py
+├── requirements.txt
+├── README.md
+├── .env.example
+├── knowledge_base.md
+├── data/
+│   └── knowledge_base.md
+├── prompt_documentation.md
+├── prompt_documentation.docx
+└── video_presentation_script.docx
+```
+
+*The file structure above reflects the expected project files; check your repository to confirm the exact locations before final submission.*
+
+## 🤖 Use of AI Tools
+
+AI tools were used to support project planning, code development, prompt refinement, troubleshooting, and documentation.
+
+The development process involved refining instructions, testing the application with sample questions, identifying a knowledge-base loading issue, and correcting the file formatting and retrieval workflow.
+
+## 📦 Project Deliverables
+
+- **Source code:** Available in this GitHub repository.
+- **Prompt documentation:** Documents the prompts and revisions used during development.
+- **Video presentation:** Explains the project objectives, AI tools, development approach, challenges, and final demonstration.
+- **Live application:** Access the deployed application through the Streamlit link provided with the submission.
+
+## 👨‍💻 Author
+
+**Shriyog A P**
+
+Electronics and Communication Engineering Graduate
+
+---
+
+*Developed as a practical AI-tools project demonstrating healthcare information retrieval and responsible AI application development.*
